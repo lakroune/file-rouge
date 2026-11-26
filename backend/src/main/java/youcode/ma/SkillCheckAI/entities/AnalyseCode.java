@@ -49,6 +49,9 @@ public class AnalyseCode {
     @OneToMany(mappedBy = "analyseCode")
     private List<ResultatExigence> resultatsExigence = new ArrayList<>();
 
+    @OneToMany(mappedBy = "analyseCode")
+    private List<SessionEvaluation> sessionsEvaluation = new ArrayList<>();
+
     public AnalyseCode(StatutAnalyse statut, String rapport) {
         this.statut = statut;
         this.rapport = rapport;
