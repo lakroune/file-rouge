@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,6 +36,12 @@ public class Promotion {
 
     @ManyToMany(mappedBy = "promotions")
     private List<Formateur> formateurs = new ArrayList<>();
+
+    @OneToMany(mappedBy = "promotion")
+    private List<Apprenant> apprenants = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "promotions")
+    private List<Projet> projets = new ArrayList<>();
 
     public Promotion(String nom, LocalDate dateDebut, LocalDate dateFin) {
         this.nom = nom;

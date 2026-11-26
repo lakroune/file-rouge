@@ -9,7 +9,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -19,6 +21,8 @@ import youcode.ma.SkillCheckAI.enums.StatutProjet;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "projets")
@@ -53,6 +57,14 @@ public class Projet {
     )
     @JoinColumn(name = "formateur_id", nullable = false)
     private Formateur formateur;
+
+    @ManyToMany
+    @JoinTable(
+            name = "projets_promotions",
+            joinColumns = @JoinColumn(name = "projet_id"),
+            inverseJoinColumns = @JoinColumn(name = "promotion_id")
+    )
+    private List<Promotion> promotions = new ArrayList<>();
 
     public Projet(
             String titre,

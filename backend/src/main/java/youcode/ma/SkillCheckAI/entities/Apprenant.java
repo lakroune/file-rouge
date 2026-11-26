@@ -3,6 +3,8 @@ package youcode.ma.SkillCheckAI.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -33,6 +35,10 @@ public class Apprenant extends Utilisateur {
 
     @OneToMany(mappedBy = "apprenant", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Livrable> livrables = new ArrayList<>();
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "promotion_id", nullable = false)
+    private Promotion promotion;
 
     public Apprenant(
             String nom,
