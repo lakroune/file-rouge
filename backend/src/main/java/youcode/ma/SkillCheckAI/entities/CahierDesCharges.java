@@ -8,11 +8,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "cahiers_des_charges")
@@ -36,6 +39,9 @@ public class CahierDesCharges {
 
     @OneToOne(mappedBy = "cahierDesCharges")
     private Projet projet;
+
+    @OneToMany(mappedBy = "cahierDesCharges")
+    private List<Exigence> exigences = new ArrayList<>();
 
     public CahierDesCharges(String titre, String contenu) {
         this.titre = titre;

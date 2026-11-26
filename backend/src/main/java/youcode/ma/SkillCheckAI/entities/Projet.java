@@ -13,6 +13,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -62,6 +63,9 @@ public class Projet {
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "cahier_des_charges_id", unique = true)
     private CahierDesCharges cahierDesCharges;
+
+    @OneToMany(mappedBy = "projet")
+    private List<Livrable> livrables = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(

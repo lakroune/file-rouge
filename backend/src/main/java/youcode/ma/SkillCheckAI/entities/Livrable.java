@@ -6,6 +6,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -37,6 +38,10 @@ public class Livrable {
 
     @ManyToOne(optional = false)
     private Apprenant apprenant;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "projet_id", nullable = false)
+    private Projet projet;
 
     public Livrable(
             String urlGithub,

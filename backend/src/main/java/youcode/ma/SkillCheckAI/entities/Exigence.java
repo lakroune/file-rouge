@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +31,10 @@ public class Exigence {
 
     @Column(nullable = false)
     private boolean obligatoire;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "cahier_des_charges_id", nullable = false)
+    private CahierDesCharges cahierDesCharges;
 
     public Exigence(String titre, String description, boolean obligatoire) {
         this.titre = titre;
