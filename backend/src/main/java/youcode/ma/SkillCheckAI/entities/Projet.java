@@ -12,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -58,6 +59,10 @@ public class Projet {
     @JoinColumn(name = "formateur_id", nullable = false)
     private Formateur formateur;
 
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "cahier_des_charges_id", unique = true)
+    private CahierDesCharges cahierDesCharges;
+
     @ManyToMany
     @JoinTable(
             name = "projets_promotions",
@@ -65,6 +70,14 @@ public class Projet {
             inverseJoinColumns = @JoinColumn(name = "promotion_id")
     )
     private List<Promotion> promotions = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "projets_competences",
+            joinColumns = @JoinColumn(name = "projet_id"),
+            inverseJoinColumns = @JoinColumn(name = "competence_id")
+    )
+    private List<Competence> competences = new ArrayList<>();
 
     public Projet(
             String titre,

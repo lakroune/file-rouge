@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,6 +33,9 @@ public class CahierDesCharges {
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime dateCreation;
+
+    @OneToOne(mappedBy = "cahierDesCharges")
+    private Projet projet;
 
     public CahierDesCharges(String titre, String contenu) {
         this.titre = titre;
