@@ -1,0 +1,13 @@
+package youcode.ma.SkillCheckAI;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SkillCheckAiApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SkillCheckAiApplication.class, args);
+	}
+
+}
