@@ -143,12 +143,3 @@ Projet en phase de conception et d'initialisation. Les fonctionnalités et l'arc
 Projet Fil Rouge — Formation Développement Full Stack.
 
 
-
-
- 
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/lakroune/file-rouge.git
-git push -u origin main
