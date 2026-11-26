@@ -7,10 +7,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "exigences")
@@ -35,6 +39,9 @@ public class Exigence {
     @ManyToOne(optional = false)
     @JoinColumn(name = "cahier_des_charges_id", nullable = false)
     private CahierDesCharges cahierDesCharges;
+
+    @OneToMany(mappedBy = "exigence")
+    private List<ResultatExigence> resultats = new ArrayList<>();
 
     public Exigence(String titre, String description, boolean obligatoire) {
         this.titre = titre;

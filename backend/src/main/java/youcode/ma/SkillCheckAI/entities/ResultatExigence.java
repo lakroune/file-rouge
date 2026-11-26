@@ -6,6 +6,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +31,14 @@ public class ResultatExigence {
     private String justification;
 
     private String preuve;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "analyse_code_id", nullable = false)
+    private AnalyseCode analyseCode;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "exigence_id", nullable = false)
+    private Exigence exigence;
 
     public ResultatExigence(
             StatutExigence statut,
