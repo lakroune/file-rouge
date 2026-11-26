@@ -12,4 +12,4 @@ Ce dossier contient les éléments de conception du projet SkillCheck AI.
 
 Le diagramme de classes du projet est disponible dans ce dossier :
 
-**Diagramme de classes — Projet Fil Rouge.png**
+![Diagramme de classes du projet](./Diagramme%20de%20classes%20%E2%80%94%20Projet%20Fil%20Rouge.png)
