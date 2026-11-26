@@ -1,12 +1,15 @@
 package youcode.ma.SkillCheckAI.entities;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -43,6 +46,13 @@ public class Projet {
 
     @Enumerated(EnumType.STRING)
     private StatutProjet statut;
+
+    @ManyToOne(
+            optional = false,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE}
+    )
+    @JoinColumn(name = "formateur_id", nullable = false)
+    private Formateur formateur;
 
     public Projet(
             String titre,
