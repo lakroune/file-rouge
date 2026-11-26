@@ -40,6 +40,9 @@ public class MiseEnSituation {
     @OneToOne(mappedBy = "miseEnSituation")
     private SessionEvaluation sessionEvaluation;
 
+    @OneToOne(mappedBy = "miseEnSituation")
+    private Solution solution;
+
     public MiseEnSituation(String enonce, TypeMiseEnSituation type, BigDecimal bareme) {
         this.enonce = enonce;
         this.type = type;

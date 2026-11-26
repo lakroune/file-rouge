@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -44,6 +45,9 @@ public class Question {
     @ManyToOne(optional = false)
     @JoinColumn(name = "session_evaluation_id", nullable = false)
     private SessionEvaluation sessionEvaluation;
+
+    @OneToOne(mappedBy = "question")
+    private Reponse reponse;
 
     public Question(
             String enonce,

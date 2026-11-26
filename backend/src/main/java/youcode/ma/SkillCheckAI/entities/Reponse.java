@@ -7,6 +7,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -36,6 +38,10 @@ public class Reponse {
 
     @Column(columnDefinition = "TEXT")
     private String feedback;
+
+    @OneToOne
+    @JoinColumn(name = "question_id", unique = true)
+    private Question question;
 
     public Reponse(String contenu, BigDecimal note, String feedback) {
         this.contenu = contenu;
