@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
@@ -17,6 +18,8 @@ import lombok.Setter;
 import youcode.ma.SkillCheckAI.enums.Difficulte;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "questions")
@@ -48,6 +51,9 @@ public class Question {
 
     @OneToOne(mappedBy = "question")
     private Reponse reponse;
+
+    @ManyToMany(mappedBy = "questions")
+    private List<Competence> competences = new ArrayList<>();
 
     public Question(
             String enonce,

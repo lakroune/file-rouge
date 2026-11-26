@@ -35,6 +35,9 @@ public class Formateur extends Utilisateur {
     )
     private List<Promotion> promotions = new ArrayList<>();
 
+    @OneToMany(mappedBy = "formateur")
+    private List<Evaluation> evaluations = new ArrayList<>();
+
     public Formateur(String nom, String prenom, String email, String password, String specialite) {
         super(nom, prenom, email, password);
         this.specialite = specialite;

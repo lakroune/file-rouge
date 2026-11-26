@@ -10,6 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -47,6 +49,10 @@ public class Evaluation {
 
     @OneToOne(mappedBy = "evaluation")
     private SessionEvaluation sessionEvaluation;
+
+    @ManyToOne
+    @JoinColumn(name = "formateur_id")
+    private Formateur formateur;
 
     public Evaluation(
             BigDecimal noteGlobale,

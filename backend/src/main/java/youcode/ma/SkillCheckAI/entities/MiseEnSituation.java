@@ -9,12 +9,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import youcode.ma.SkillCheckAI.enums.TypeMiseEnSituation;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "mises_en_situation")
@@ -42,6 +45,9 @@ public class MiseEnSituation {
 
     @OneToOne(mappedBy = "miseEnSituation")
     private Solution solution;
+
+    @ManyToMany(mappedBy = "misesEnSituation")
+    private List<Competence> competences = new ArrayList<>();
 
     public MiseEnSituation(String enonce, TypeMiseEnSituation type, BigDecimal bareme) {
         this.enonce = enonce;
