@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -47,6 +48,14 @@ public class SessionEvaluation {
 
     @OneToMany(mappedBy = "sessionEvaluation")
     private List<Question> questions = new ArrayList<>();
+
+    @OneToOne
+    @JoinColumn(name = "mise_en_situation_id", unique = true)
+    private MiseEnSituation miseEnSituation;
+
+    @OneToOne
+    @JoinColumn(name = "evaluation_id", unique = true)
+    private Evaluation evaluation;
 
     public SessionEvaluation(StatutSession statut) {
         this.statut = statut;

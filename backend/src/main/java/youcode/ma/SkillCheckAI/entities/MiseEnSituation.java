@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,6 +36,9 @@ public class MiseEnSituation {
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal bareme;
+
+    @OneToOne(mappedBy = "miseEnSituation")
+    private SessionEvaluation sessionEvaluation;
 
     public MiseEnSituation(String enonce, TypeMiseEnSituation type, BigDecimal bareme) {
         this.enonce = enonce;

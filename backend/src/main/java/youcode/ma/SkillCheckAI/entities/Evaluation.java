@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -43,6 +44,9 @@ public class Evaluation {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private StatutEvaluation statut;
+
+    @OneToOne(mappedBy = "evaluation")
+    private SessionEvaluation sessionEvaluation;
 
     public Evaluation(
             BigDecimal noteGlobale,
