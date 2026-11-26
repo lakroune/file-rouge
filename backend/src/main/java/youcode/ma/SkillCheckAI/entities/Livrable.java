@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,8 @@ import lombok.Setter;
 import youcode.ma.SkillCheckAI.enums.StatutLivrable;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "livrables")
@@ -42,6 +45,9 @@ public class Livrable {
     @ManyToOne(optional = false)
     @JoinColumn(name = "projet_id", nullable = false)
     private Projet projet;
+
+    @OneToMany(mappedBy = "livrable")
+    private List<AnalyseCode> analysesCode = new ArrayList<>();
 
     public Livrable(
             String urlGithub,
