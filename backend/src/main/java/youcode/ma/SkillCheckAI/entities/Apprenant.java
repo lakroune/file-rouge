@@ -10,7 +10,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import youcode.ma.SkillCheckAI.enums.Niveau;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToMany;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "apprenants")
@@ -26,6 +30,9 @@ public class Apprenant extends Utilisateur {
 
     @Enumerated(EnumType.STRING)
     private Niveau niveau;
+
+    @OneToMany(mappedBy = "apprenant", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Livrable> livrables = new ArrayList<>();
 
     public Apprenant(
             String nom,
