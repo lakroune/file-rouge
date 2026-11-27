@@ -8,7 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import youcode.ma.SkillCheckAI.entities.Apprenant;
+import youcode.ma.SkillCheckAI.dto.responses.ApprenantResponse;
+import youcode.ma.SkillCheckAI.mappers.ApprenantMapper;
 import youcode.ma.SkillCheckAI.services.ApprenantService;
 
 @RestController
@@ -18,14 +19,6 @@ import youcode.ma.SkillCheckAI.services.ApprenantService;
 public class ApprenantController {
 
     private final ApprenantService apprenantService;
-
-    @GetMapping
-    @Operation(
-            summary = "Lister les apprenants",
-            description = "Récupère la liste de tous les apprenants enregistrés"
-    )
-    public List<Apprenant> findAll() {
-        return apprenantService.findAll();
-    }
+ 
 
 }

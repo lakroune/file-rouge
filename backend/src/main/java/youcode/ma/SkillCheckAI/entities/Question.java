@@ -59,8 +59,7 @@ public class Question {
             String enonce,
             Difficulte difficulte,
             Integer ordre,
-            BigDecimal bareme
-    ) {
+            BigDecimal bareme) {
         this.enonce = enonce;
         this.difficulte = difficulte;
         this.ordre = ordre;
