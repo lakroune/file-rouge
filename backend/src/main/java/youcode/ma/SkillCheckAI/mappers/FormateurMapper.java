@@ -1,11 +1,25 @@
 package youcode.ma.SkillCheckAI.mappers;
 
+import youcode.ma.SkillCheckAI.dto.requests.FormateurRequest;
 import youcode.ma.SkillCheckAI.dto.responses.FormateurResponse;
 import youcode.ma.SkillCheckAI.entities.Formateur;
 
 public final class FormateurMapper {
 
     private FormateurMapper() {
+    }
+
+    public static Formateur toEntity(FormateurRequest request) {
+        if (request == null) {
+            return null;
+        }
+        return new Formateur(
+                request.getNom(),
+                request.getPrenom(),
+                request.getEmail(),
+                request.getPassword(),
+                request.getSpecialite()
+        );
     }
 
     public static FormateurResponse toResponse(Formateur formateur) {
